@@ -27,6 +27,7 @@ function app(people){
 function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
+  console.log(person.firstName);
 
   if(!person){
     alert("Could not find that individual.");
@@ -55,7 +56,7 @@ function mainMenu(person, people){
   }
 }
 
-function searchByName(people){
+function searchByName(people){ // needs to have error correction for lower case
   let firstName = promptFor("What is the person's first name?", chars);
   let lastName = promptFor("What is the person's last name?", chars);
 
@@ -68,7 +69,7 @@ function searchByName(people){
     }
   })
   // TODO: find the person using the name they entered
-  return foundPerson;
+  return foundPerson.shift();
 }
 
 // alerts a list of people
