@@ -102,7 +102,7 @@ function searchByName(people){
 }
 
 function searchByGender(people){
-  let gender = promptFor("What is the person's gender?", chars).toLowerCase();
+  let gender = promptFor("What is the person's gender?", genderValidation).toLowerCase();
 
   let foundGender = people.filter(function(person){
     if(person.gender === gender){
@@ -116,7 +116,7 @@ function searchByGender(people){
 }
 
 function searchByOccupation(people){
-  let occupation = promptFor("What is the person's occupation?", chars).toLowerCase();
+  let occupation = promptFor("What is the person's occupation?", occupationValidation).toLowerCase();
 
   let foundOccupation = people.filter(function(person){
     if(person.occupation === occupation){
@@ -158,7 +158,7 @@ function searchByWeight(people){
 }
 
 function searchByEyeColor(people){
-  let eyeColor = promptFor("What is the person's eye color?", chars).toLowerCase();
+  let eyeColor = promptFor("What is the person's eye color?", eyeColorValidation).toLowerCase();
 
   let foundEyeColor = people.filter(function(person){
     if(person.eyeColor === eyeColor){
@@ -215,6 +215,15 @@ function promptFor(question, valid){
 // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+}
+function genderValidation(input){
+  return input.toLowerCase() == "male" || input.toLowerCase() == "female";
+}
+function occupationValidation(input){
+  return input.toLowerCase() == "programmer" || input.toLowerCase() == "assistant" || input.toLowerCase() == "landscaper" || input.toLowerCase() == "nurse" || input.toLowerCase() == "student" || input.toLowerCase() == "politician" || input.toLowerCase() == "architect" || input.toLowerCase() == "doctor";
+}
+function eyeColorValidation(input){
+  return input.toLowerCase() == "brown" || input.toLowerCase() == "blue" || input.toLowerCase() == "black" || input.toLowerCase() == "hazel" || input.toLowerCase() == "green";
 }
 
 // helper function to pass in as default promptFor validation
