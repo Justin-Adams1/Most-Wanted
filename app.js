@@ -17,6 +17,8 @@ function app(people){
       do{
         switch(searchCriteria){
           case '1':
+            // let pick = "Gender"
+            // let object = people.gender
             let searchGender = searchByGender(people);
             displayPeople(searchGender);
             break;
@@ -71,6 +73,8 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
+    let family = searchByLastName(people);
+    displayPeople(family);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -170,6 +174,35 @@ function searchByEyeColor(people){
   })
   return foundEyeColor;
 }
+function searchByLastName(people){
+  let lastName = promptFor("What is the person's Last Name?", chars)
+
+  let foundLastName = people.filter(function(person){
+    if(person.lastName === lastName){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundLastName;
+}
+
+  // function searchByTrait(people, pick, object, validation){
+  //   let quality = promptFor("What is the person's " + pick + "?", validation).toLowerCase();
+  
+  //   let foundQuality = people.filter(function(person){
+  //     if(person.object === quality){
+  //       return true;
+  //     }
+  //     else{
+  //       return false;
+  //     }
+  //   })
+  //   return foundQuality;
+  // }
+
+
 function multiCriteria(people){
   // let genderResult = prompt("Search by gender:");
   // let eyeResult = prompt("Search by eye color:");
@@ -230,3 +263,8 @@ function eyeColorValidation(input){
 function chars(input){
   return true; // default validation only
 }
+
+
+
+
+
