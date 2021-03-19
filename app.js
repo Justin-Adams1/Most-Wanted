@@ -34,7 +34,6 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }else{
-    //not passing in firstName or lastName; they show value of undefined
   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
@@ -59,8 +58,8 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
-  let firstName = promptFor("What is the person's first name?", chars);
-  let lastName = promptFor("What is the person's last name?", chars);
+  let firstName = promptFor("What is the person's first name?".toLowerCase(), chars);
+  let lastName = promptFor("What is the person's last name?".toLowerCase(), chars);
 
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
