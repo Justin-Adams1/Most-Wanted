@@ -13,7 +13,7 @@ function app(people){
       break;
     case 'no':
 
-    let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height");
+    let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6 Mulitple Criteria Gender/Eye Color/Occupation");
       do{
         switch(searchCriteria){
           case '1':
@@ -36,6 +36,9 @@ function app(people){
             let searchHeight = searchByHeight(people);
             displayPeople(searchHeight);
             break;
+          case '6':
+            multiCriteria(people);
+
       }
     }
     while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5")
@@ -166,6 +169,16 @@ function searchByEyeColor(people){
     }
   })
   return foundEyeColor;
+}
+function multiCriteria(people){
+  // let genderResult = prompt("Search by gender:");
+  // let eyeResult = prompt("Search by eye color:");
+  // let occupatoinResult = prompt("Search by Occupation:")
+  displayPeople(searchByOccupation(searchByEyeColor(searchByGender(people))));
+   
+
+
+  
 }
 
 // alerts a list of people
