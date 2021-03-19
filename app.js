@@ -13,11 +13,13 @@ function app(people){
       break;
     case 'no':
       // TODO: search by traits
+
+
       break;
       default:
     app(people); // restart app
       break;
-  }
+  } 
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   mainMenu(searchResults, people);
@@ -31,13 +33,13 @@ function mainMenu(person, people){
   if(!person){
     alert("Could not find that individual.");
     return app(people); // restart
-  }
-
+  }else{
+    //not passing in firstName or lastName; they show value of undefined
   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    window.confirm("Gender: " + person.gender + "\nDate of Birth: " + person.dob + "\nHeight: " + person.height + "\nWeight: " + person.weight + "\nEye Color: " + person.eyeColor + "\nOccupation: " + person.occupation);
     break;
     case "family":
     // TODO: get person's family
@@ -54,6 +56,7 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
+}
 
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
@@ -62,13 +65,19 @@ function searchByName(people){
   let foundPerson = people.filter(function(person){
     if(person.firstName === firstName && person.lastName === lastName){
       return true;
+     
     }
     else{
       return false;
     }
   })
+  
+  
+  
   // TODO: find the person using the name they entered
-  return foundPerson;
+  console.log(foundPerson);
+  return foundPerson.shift();
+  
 }
 
 // alerts a list of people
