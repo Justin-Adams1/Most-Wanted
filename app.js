@@ -72,10 +72,6 @@ function searchByName(people){
     }
   })
   
-  
-  
-  // TODO: find the person using the name they entered
-  console.log(foundPerson);
   return foundPerson.shift();
   
 }
