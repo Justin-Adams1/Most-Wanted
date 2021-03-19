@@ -12,6 +12,9 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      let searchGender = searchByGender(people);
+      
+
       // TODO: search by traits
 
 
@@ -73,6 +76,22 @@ function searchByName(people){
   })
   
   return foundPerson.shift();
+  
+}
+function searchByGender(people){
+  let gender = promptFor("What is the person's gender?", chars).toLowerCase();
+
+  let foundGender = people.filter(function(person){
+    if(person.gender === gender){
+      return true;
+     
+    }
+    else{
+      return false;
+    }
+  })
+  
+  return foundGender.shift();
   
 }
 
