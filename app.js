@@ -12,38 +12,37 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-
-    let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6 Mulitple Criteria Gender/Eye Color/Occupation");
-      do{
-        switch(searchCriteria){
-          case '1':
-            // let pick = "Gender"
-            // let object = people.gender
-            let searchGender = searchByGender(people);
-            displayPeople(searchGender);
-            break;
-          case '2':
-            let searchEyeColor = searchByEyeColor(people);
-            displayPeople(searchEyeColor);
-           break;
-          case '3':
-            let searchOccupation = searchByOccupation(people);
-            displayPeople(searchOccupation);
-            break;
-          case '4':
-            let searchWeight = searchByWeight(people);
-            displayPeople(searchWeight);
-            break;
-          case '5':
-            let searchHeight = searchByHeight(people);
-            displayPeople(searchHeight);
-            break;
-          case '6':
-            multiCriteria(people);
-
-      }
-    }
-    while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5")
+    searchResults = searchByCriteria(people);
+    // let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6 Mulitple Criteria Gender/Eye Color/Occupation");
+    //   do{
+    //     switch(searchCriteria){
+    //       case '1':
+    //         // let pick = "Gender"
+    //         // let object = people.gender
+    //         let searchGender = searchByGender(people);
+    //         displayPeople(searchGender);
+    //         break;
+    //       case '2':
+    //         let searchEyeColor = searchByEyeColor(people);
+    //         displayPeople(searchEyeColor);
+    //        break;
+    //       case '3':
+    //         let searchOccupation = searchByOccupation(people);
+    //         displayPeople(searchOccupation);
+    //         break;
+    //       case '4':
+    //         let searchWeight = searchByWeight(people);
+    //         displayPeople(searchWeight);
+    //         break;
+    //       case '5':
+    //         let searchHeight = searchByHeight(people);
+    //         displayPeople(searchHeight);
+    //         break;
+    //       case '6':
+    //         multiCriteria(people);
+    //   }
+    // }
+  //   while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5")
 
       break;
       default:
@@ -103,6 +102,50 @@ function searchByName(people){
     }
   })
   return foundPerson.shift();
+}
+
+function searchByCriteria(people){
+  let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6. Show Results");
+  let secondChoice = people;
+
+  do{
+    switch(searchCriteria){
+      case '1':
+        let searchGender = searchByGender(secondChoice);
+        secondChoice = searchGender;
+        displayPeople(searchGender);
+        searchByCriteria(secondChoice);
+        break;
+      case '2':
+        let searchEyeColor = searchByEyeColor(secondChoice);
+        secondChoice = searchEyeColor;
+        displayPeople(searchEyeColor);
+        searchByCriteria(secondChoice);
+       break;
+      case '3':
+        let searchOccupation = searchByOccupation(secondChoice);
+        secondChoice = searchOccupation;
+        displayPeople(searchOccupation);
+        searchByCriteria(secondChoice);
+        break;
+      case '4':
+        let searchWeight = searchByWeight(secondChoice);
+        secondChoice = searchWeight;
+        displayPeople(searchWeight);
+        searchByCriteria(secondChoice);
+        break;
+      case '5':
+        let searchHeight = searchByHeight(secondChoice);
+        secondChoice = searchHeight;
+        displayPeople(searchHeight);
+        searchByCriteria(secondChoice);
+        break;
+      case '6':
+        displayPeople(secondChoice);
+        app(people);
+        break;
+  }}
+  while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5" || searchCriteria != "6");
 }
 
 function searchByGender(people){
@@ -263,8 +306,3 @@ function eyeColorValidation(input){
 function chars(input){
   return true; // default validation only
 }
-
-
-
-
-
