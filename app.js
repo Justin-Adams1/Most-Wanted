@@ -13,37 +13,6 @@ function app(people){
       break;
     case 'no':
     searchResults = searchByCriteria(people);
-    // let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6 Mulitple Criteria Gender/Eye Color/Occupation");
-    //   do{
-    //     switch(searchCriteria){
-    //       case '1':
-    //         // let pick = "Gender"
-    //         // let object = people.gender
-    //         let searchGender = searchByGender(people);
-    //         displayPeople(searchGender);
-    //         break;
-    //       case '2':
-    //         let searchEyeColor = searchByEyeColor(people);
-    //         displayPeople(searchEyeColor);
-    //        break;
-    //       case '3':
-    //         let searchOccupation = searchByOccupation(people);
-    //         displayPeople(searchOccupation);
-    //         break;
-    //       case '4':
-    //         let searchWeight = searchByWeight(people);
-    //         displayPeople(searchWeight);
-    //         break;
-    //       case '5':
-    //         let searchHeight = searchByHeight(people);
-    //         displayPeople(searchHeight);
-    //         break;
-    //       case '6':
-    //         multiCriteria(people);
-    //   }
-    // }
-  //   while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5")
-
       break;
       default:
     app(people); // restart app
@@ -68,7 +37,6 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     displayPerson(person);
-    //window.confirm("Gender: " + person.gender + "\nDate of Birth: " + person.dob + "\nHeight: " + person.height + "\nWeight: " + person.weight + "\nEye Color: " + person.eyeColor + "\nOccupation: " + person.occupation);
     break;
     case "family":
     // TODO: get person's family
@@ -231,29 +199,11 @@ function searchByLastName(people){
   return foundLastName;
 }
 
-  // function searchByTrait(people, pick, object, validation){
-  //   let quality = promptFor("What is the person's " + pick + "?", validation).toLowerCase();
-  
-  //   let foundQuality = people.filter(function(person){
-  //     if(person.object === quality){
-  //       return true;
-  //     }
-  //     else{
-  //       return false;
-  //     }
-  //   })
-  //   return foundQuality;
-  // }
-
-
 function multiCriteria(people){
   // let genderResult = prompt("Search by gender:");
   // let eyeResult = prompt("Search by eye color:");
   // let occupatoinResult = prompt("Search by Occupation:")
   displayPeople(searchByOccupation(searchByEyeColor(searchByGender(people))));
-   
-
-
   
 }
 
