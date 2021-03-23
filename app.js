@@ -191,11 +191,11 @@ function searchByEyeColor(people){
 }
 
 function searchFamily(people, personFamily, familySearch){
-let name = personFamily.firstName + " " + personFamily.lastName + "\n Children: \n";
+let name = "Starting Person: " + personFamily.firstName + " " + personFamily.lastName + "\n\nChildren: ";
 familySearch.push(name);
 let descendantsOne = people.filter(function(person){
   if(person.parents[0] == personFamily.id || person.parents[1] == personFamily.id){
-    let currentDescendant = person.firstName + " " + person.lastName + "\n";
+    let currentDescendant = person.firstName + " " + person.lastName + " ";
     let descendantID = person.id;
     familySearch.push(currentDescendant);
     return true;
@@ -204,18 +204,20 @@ let descendantsOne = people.filter(function(person){
     return false;
   }
 })
-
+// let spouseSearchVar = [];
+// spouseSearch(people, personFamily, spouseSearchVar)
 return familySearch;
 }
 
 function spouseSearch(people, personFamily, spouseSearch){
   let spouse = people.filter(function(person){
     if(person.currentSpouse == personFamily.id){
-      let spouseName = "Spouse: " + person.firstName + " " + person.lastName;
+      let spouseName = "\n\n Spouse: " + person.firstName + " " + person.lastName;
       spouseSearch.push(spouseName);
       return true;
     }
     else{
+      let spouseName = "\n\n Spouse: " + person.firstName + " " + person.lastName;
       return false;
     }
   })
