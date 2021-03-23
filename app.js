@@ -186,7 +186,7 @@ function searchByEyeColor(people){
 }
 
 function searchFamily(people, personFamily, familySearch){
-let name = personFamily.firstName + " " + personFamily.lastName + "\n Children: ";
+let name = personFamily.firstName + " " + personFamily.lastName + "\n Children: \n";
 familySearch.push(name);
 let descendantsOne = people.filter(function(person){
   if(person.parents[0] == personFamily.id || person.parents[1] == personFamily.id){
