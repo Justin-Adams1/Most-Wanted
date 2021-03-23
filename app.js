@@ -72,23 +72,22 @@ function searchByName(people){
   return foundPerson.shift();
 }
 
-function searchByCriteria(people){
-  let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6. Show Results");
-  let secondChoice = people;
+function searchByCriteria(people, filteredPeople = []){
+  let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6. Show Results then Exit");
+  //let secondChoice = people;
+  let secondPrompt;
 
   do{
     switch(searchCriteria){
       case '1':
-        let searchGender = searchByGender(secondChoice);
-        secondChoice = searchGender;
-        displayPeople(searchGender);
-        searchByCriteria(secondChoice);
+        filteredPeople = searchByGender(people);
+        displayPeople(filteredPeople);
+        searchByCriteria(people, filteredPeople);
         break;
       case '2':
-        let searchEyeColor = searchByEyeColor(secondChoice);
-        secondChoice = searchEyeColor;
+        filteredPeople = searchByEyeColor(people);
         displayPeople(searchEyeColor);
-        searchByCriteria(secondChoice);
+        searchByCriteria(people, filteredPeople);
        break;
       case '3':
         let searchOccupation = searchByOccupation(secondChoice);
@@ -109,11 +108,12 @@ function searchByCriteria(people){
         searchByCriteria(secondChoice);
         break;
       case '6':
-        displayPeople(secondChoice);
+        displayPeople(filteredPeople);
         app(people);
         break;
   }}
   while(searchCriteria != "1" || searchCriteria != "2" || searchCriteria != "3" || searchCriteria != "4" || searchCriteria != "5" || searchCriteria != "6");
+
 }
 
 function searchByGender(people){
