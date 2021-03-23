@@ -39,9 +39,10 @@ function mainMenu(person, people){
     displayPerson(person);
     break;
     case "family":
-    // TODO: get person's family
-    let family = searchByLastName(people);
-    displayPeople(family);
+      let familySearch = [];
+      alert(searchFamily(people, person, familySearch = []));
+     
+
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -89,17 +90,17 @@ function searchByCriteria(people, filteredPeople = []){
         searchByCriteria(people, filteredPeople);
        break;
       case '3':
-        let searchOccupation = searchByOccupation(people);
+        filteredPeople = searchByOccupation(people);
         displayPeople(filteredPeople);
         searchByCriteria(people, filteredPeople);
         break;
       case '4':
-        let searchWeight = searchByWeight(people);
+        filteredPeople = searchByWeight(people);
         displayPeople(filteredPeople);
         searchByCriteria(people, filteredPeople);
         break;
       case '5':
-        let searchHeight = searchByHeight(people);
+        filteredPeople = searchByHeight(people);
         displayPeople(filteredPeople);
         searchByCriteria(people, filteredPeople);
         break;
@@ -181,27 +182,26 @@ function searchByEyeColor(people){
   })
   return foundEyeColor;
 }
-function searchByLastName(people){
-  let lastName = promptFor("What is the person's Last Name?", chars)
 
-  let foundLastName = people.filter(function(person){
-    if(person.lastName === lastName){
-      return true;
-    }
-    else{
-      return false;
-    }
-  })
-  return foundLastName;
+function searchFamily(people, personFamily, familySearch){
+let name = personFamily.firstName + " " + personFamily.lastName;
+familySearch.push(name);
+let descendantsOne = people.filter(function(person){
+  if(person.parents[0] == personFamily.id || person.parents[1] == personFamily.id){
+    let currentDescendant = person.firstName + " " + person.lastName + "\n";
+    familySearch.push(currentDescendant);
+    return true;
+  }
+  else{
+    return false;
+  }
+})
+
+return familySearch;
 }
 
-function multiCriteria(people){
-  // let genderResult = prompt("Search by gender:");
-  // let eyeResult = prompt("Search by eye color:");
-  // let occupatoinResult = prompt("Search by Occupation:")
-  displayPeople(searchByOccupation(searchByEyeColor(searchByGender(people))));
   
-}
+
 
 // alerts a list of people
 function displayPeople(people){
