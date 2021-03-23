@@ -47,7 +47,12 @@ function mainMenu(person, people){
 
     break;
     case "descendants":
-    // TODO: get person's descendants
+   let allDescendants = [];
+   let descSearch = [];
+   alert(descendantSearch(people, person, descSearch = [], allDescendants = []));
+   alert(descendantAllSearch(people, person, descSearch = [], allDescendants = []))
+
+    
     break;
     case "restart":
     app(people); // restart
@@ -217,7 +222,41 @@ function spouseSearch(people, personFamily, spouseSearch){
   return spouseSearch;
 }
 
+function descendantSearch(people, dpersonFamily, descSearch, descendantID){
+  let name = dpersonFamily.firstName + " " + dpersonFamily.lastName + "\n Descedants: \n";
+  descSearch.push(name);
+  let allDescendants = [];
+  let descendantsOne = people.filter(function(person){
+    if(person.parents[0] == dpersonFamily.id || person.parents[1] == dpersonFamily.id){
+      let currentDescendant = person.firstName + " " + person.lastName + "\n";
+      descendantID = person.id;
+      allDescendants.push(descendantID);
+      descSearch.push(currentDescendant);
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
   
+  return descSearch, allDescendants;
+  }
+
+  //let allDescendants = [];
+  //let descSearch = [];
+  //alert(descendantSearch(people, person, descSearch = [], allDescendants = []));
+
+
+  function descendantAllSearch(people, descPersonFamily, descendSearch, allDescendants, completeDescendants){
+    let searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
+    let searchResults.[0] = descPersonFamily;
+    while(searchResults != undefined){
+      searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
+      completeDescendants.push(allDescendants);
+    }return completeDescendants;
+  }
+
+
 
 
 // alerts a list of people
