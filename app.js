@@ -199,8 +199,8 @@ let descendantsOne = people.filter(function(person){
     return false;
   }
 })
-let spouseSearchVar = [];
-spouseSearch(people, personFamily, spouseSearchVar)
+// let spouseSearchVar = [];
+// spouseSearch(people, personFamily, spouseSearchVar)
 return familySearch;
 }
 
@@ -212,6 +212,7 @@ function spouseSearch(people, personFamily, spouseSearch){
       return true;
     }
     else{
+      let spouseName = "\n\n Spouse: " + person.firstName + " " + person.lastName;
       return false;
     }
   })
