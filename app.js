@@ -41,8 +41,8 @@ function mainMenu(person, people){
     case "family":
       let familySearch = [];
       let spouseName = [];
-      alert(searchFamily(people, person, familySearch = []));
-      alert(spouseSearch(people, person, spouseName = []));
+      alert(searchFamily(people, person, familySearch = []) + spouseSearch(people, person, spouseName = []));
+      
      
 
     break;
@@ -186,7 +186,7 @@ function searchByEyeColor(people){
 }
 
 function searchFamily(people, personFamily, familySearch){
-let name = personFamily.firstName + " " + personFamily.lastName + "\n Children:\n";
+let name = personFamily.firstName + " " + personFamily.lastName + "\n Children: ";
 familySearch.push(name);
 let descendantsOne = people.filter(function(person){
   if(person.parents[0] == personFamily.id || person.parents[1] == personFamily.id){
