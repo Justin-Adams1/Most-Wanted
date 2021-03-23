@@ -40,7 +40,9 @@ function mainMenu(person, people){
     break;
     case "family":
       let familySearch = [];
+      let spouseName = [];
       alert(searchFamily(people, person, familySearch = []));
+      alert(spouseSearch(people, person, spouseName = []));
      
 
     break;
@@ -184,11 +186,12 @@ function searchByEyeColor(people){
 }
 
 function searchFamily(people, personFamily, familySearch){
-let name = personFamily.firstName + " " + personFamily.lastName;
+let name = personFamily.firstName + " " + personFamily.lastName + "\n Children:\n";
 familySearch.push(name);
 let descendantsOne = people.filter(function(person){
   if(person.parents[0] == personFamily.id || person.parents[1] == personFamily.id){
     let currentDescendant = person.firstName + " " + person.lastName + "\n";
+    let descendantID = person.id;
     familySearch.push(currentDescendant);
     return true;
   }
@@ -198,6 +201,20 @@ let descendantsOne = people.filter(function(person){
 })
 
 return familySearch;
+}
+
+function spouseSearch(people, personFamily, spouseSearch){
+  let spouse = people.filter(function(person){
+    if(person.currentSpouse == personFamily.id){
+      let spouseName = "Spouse: " + person.firstName + " " + person.lastName;
+      spouseSearch.push(spouseName);
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return spouseSearch;
 }
 
   
