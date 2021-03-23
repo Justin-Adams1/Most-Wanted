@@ -74,7 +74,6 @@ function searchByName(people){
 
 function searchByCriteria(people, filteredPeople = []){
   let searchCriteria = prompt("Please enter the number of your selection to search by: \n1. Gender \n2. Eye Color \n3. Occupation \n4. Weight \n5. Height \n6. Show Results then Exit");
-  //let secondChoice = people;
   let secondPrompt;
 
   do{
@@ -90,22 +89,19 @@ function searchByCriteria(people, filteredPeople = []){
         searchByCriteria(people, filteredPeople);
        break;
       case '3':
-        let searchOccupation = searchByOccupation(secondChoice);
-        secondChoice = searchOccupation;
-        displayPeople(searchOccupation);
-        searchByCriteria(secondChoice);
+        let searchOccupation = searchByOccupation(people);
+        displayPeople(filteredPeople);
+        searchByCriteria(people, filteredPeople);
         break;
       case '4':
-        let searchWeight = searchByWeight(secondChoice);
-        secondChoice = searchWeight;
-        displayPeople(searchWeight);
-        searchByCriteria(secondChoice);
+        let searchWeight = searchByWeight(people);
+        displayPeople(filteredPeople);
+        searchByCriteria(people, filteredPeople);
         break;
       case '5':
-        let searchHeight = searchByHeight(secondChoice);
-        secondChoice = searchHeight;
-        displayPeople(searchHeight);
-        searchByCriteria(secondChoice);
+        let searchHeight = searchByHeight(people);
+        displayPeople(filteredPeople);
+        searchByCriteria(people, filteredPeople);
         break;
       case '6':
         displayPeople(filteredPeople);
