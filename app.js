@@ -1,4 +1,4 @@
-"use strict"
+//"use strict"
 /*
 Build all of your functions for displaying and gathering information below (GUI).
 */
@@ -60,17 +60,26 @@ function mainMenu(person, people){
 
    let test = descendantSearch(person, people);
    completeDescendants = test;
-   let child = test[0];
-   let x = 0;
-   while(child.id != undefined){
-    let grandchild = child;
-    let descendantList = descendantSearch(grandchild, people);
-    if(descendantList == 0){
-      x++;
-      child = test[x];
-    }descendantList.push(allDescendants);
+
+   displayDescendant = grandchildSearch(test, people);
+   completeDescendants.push(displayDescendant);
+   //alert(completeDescendants);
+
+
+   function grandchildSearch(childBuffer, people)
+    let kid = childBuffer[0];
+    let x = 0;
+    while(kid.id != undefined){
+     let grandchild = kid;
+     let descendantList = descendantSearch(grandchild, people);
+     if(descendantList.length != 0){
+       x++;
+       kid = childBuffer[x];
+     }allDescendants.push(descendatList);
     
-   }return allDescendants;
+    }return allDescendants;
+  
+   
 
 
 
