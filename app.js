@@ -49,10 +49,21 @@ function mainMenu(person, people){
     case "descendants":
    let allDescendants = [];
    let descSearch = [];
-   alert(descendantSearch(people, person, descSearch = [], allDescendants = []));
-   alert(descendantAllSearch(people, person, descSearch = [], allDescendants = []))
-
-    
+   let completeDescendants =[];
+   let count3 = 0;
+   let count4 = 0;
+   let personDescendant = [];
+   let displayDescendant = [];
+   personDescendant = person;
+   do{
+    descendantSearch(people, personDescendant, completeDescendants);
+    do{
+      displayDescendant = completeDescendants[count3, count4];
+      console.log(displayDescendant[count4].firstName);
+    }while(count4=0, completeDescendants[count3, count4+1] != undefined, count4++)
+  
+   }while(count3=0, completeDescendants[completeDescendants.length+1] != undefined, count3++)
+  
     break;
     case "restart":
     app(people); // restart
@@ -224,39 +235,34 @@ function spouseSearch(people, personFamily, spouseSearch){
   return spouseSearch;
 }
 
-function descendantSearch(people, dpersonFamily, descSearch, descendantID){
-  let name = dpersonFamily.firstName + " " + dpersonFamily.lastName + "\n Descedants: \n";
-  descSearch.push(name);
-  let allDescendants = [];
-  let descendantsOne = people.filter(function(person){
-    if(person.parents[0] == dpersonFamily.id || person.parents[1] == dpersonFamily.id){
-      let currentDescendant = person.firstName + " " + person.lastName + "\n";
-      descendantID = person.id;
-      allDescendants.push(descendantID);
-      descSearch.push(currentDescendant);
+function descendantSearch(people, personDescendant, completeDescendants){
+  completeDescendants.push(people.filter(function(person){
+    if(person.parents[0] == personDescendant.id || person.parents[1] == personDescendant.id){
+      let currentDescendant = person;
+      //completeDescendants.push(currentDescendant);
       return true;
-    }
-    else{
+    }else{
       return false;
     }
-  })
-  
-  return descSearch, allDescendants;
-  }
+  }))
+  return completeDescendants;
+}
 
   //let allDescendants = [];
   //let descSearch = [];
   //alert(descendantSearch(people, person, descSearch = [], allDescendants = []));
 
 
-  function descendantAllSearch(people, descPersonFamily, descendSearch, allDescendants, completeDescendants){
-    let searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
-    let searchResults.[0] = descPersonFamily;
-    while(searchResults != undefined){
-      searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
-      completeDescendants.push(allDescendants);
-    }return completeDescendants;
-  }
+  // function descendantAllSearch(people, descPersonFamily, descendSearch, allDescendants, completeDescendants){
+  //   let searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
+  //   completeDescendants.push(searchResults);
+  //   let count2 =0;
+  //   do{
+  //     searchResults = descendantSearch(people, descPersonFamily, descendSearch = [], allDescendants = []);
+  //     completeDescendants.push(searchResults);
+  //   }while(count2=0, completeDescendants[count2] != undefined, count2++);
+  //   return completeDescendants;
+  // }
 
 
 
