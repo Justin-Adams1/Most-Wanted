@@ -55,15 +55,13 @@ function mainMenu(person, people){
    let personDescendant = [];
    let displayDescendant = [];
    personDescendant = person;
-   do{
-    descendantSearch(people, personDescendant, completeDescendants);
-    do{
-      displayDescendant = completeDescendants[count3, count4];
-      console.log(displayDescendant[count4].firstName);
-    }while(count4=0, completeDescendants[count3, count4+1] != undefined, count4++)
-  
-   }while(count3=0, completeDescendants[completeDescendants.length+1] != undefined, count3++)
-  
+   
+    completeDescendants = descendantSearch(people, personDescendant);
+    completeDescendants.forEach(descendantSearch(people, completeDescendants));
+
+
+    
+   
     break;
     case "restart":
     app(people); // restart
@@ -235,18 +233,22 @@ function spouseSearch(people, personFamily, spouseSearch){
   return spouseSearch;
 }
 
-function descendantSearch(people, personDescendant, completeDescendants){
-  completeDescendants.push(people.filter(function(person){
-    if(person.parents[0] == personDescendant.id || person.parents[1] == personDescendant.id){
-      let currentDescendant = person;
-      //completeDescendants.push(currentDescendant);
+function descendantSearch(people, personDescendant){
+  let checkDescendant = personDescendant;
+  let completeDescendants = (people.filter(function(person){
+    if(person.parents[0] == checkDescendant.id || person.parents[1] == checkDescendant.id){
+    
+     
       return true;
     }else{
       return false;
-    }
+    } 
   }))
+ 
   return completeDescendants;
 }
+
+
 
   //let allDescendants = [];
   //let descSearch = [];
