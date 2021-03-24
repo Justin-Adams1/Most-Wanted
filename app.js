@@ -45,34 +45,20 @@ function mainMenu(person, people){
 
     break;
     case "descendants":
-   let allDescendants = [];
-   let descSearch = [];
    let completeDescendants =[];
-   let count3 = 0;
-   let count4 = 0;
    let personDescendant = [];
    let displayDescendant = [];
    personDescendant = person;
-   let count5 =0;
-   let descendantList;
-
-
+   let y =0;
 
    let test = descendantSearch(person, people);
    completeDescendants = test;
   let x=0;
 
-  displayDescendant = (grandchildSearch(test, people));
-  completeDescendants.push(displayDescendant); 
+  displayDescendant = grandchildSearch(test, people);
+  completeDescendants.push(displayDescendant.shift()); 
 
-  
-
-   //completeDescendants.forEach(x => {grandchildSearch(completeDescendants, people)}, x++);
-  
-   //displayDescendant = grandchildSearch(test, people);
-   //completeDescendants.push(displayDescendant);
-   //alert(completeDescendants);
-
+    displayPeople(completeDescendants);
 
    function grandchildSearch(childBuffer, people){
     let allDescendants =[];
@@ -92,8 +78,8 @@ function mainMenu(person, people){
        break;
      }
   }while(x < childBuffer.length)
-  
-  return allDescendants.shift();
+  allDescendants = allDescendants.shift();
+  return allDescendants;
   }
 
 

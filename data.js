@@ -183,6 +183,19 @@ const data = [
 		"currentSpouse": null
 	},
 	{
+		"id": 348457184,
+		"firstName": "Test",
+		"lastName": "Madden",
+		"gender": "female",
+		"dob": "11/4/1970",
+		"height": 62,
+		"weight": 235,
+		"eyeColor": "hazel",
+		"occupation": "landscaper",
+		"parents": [629807187, 313998000],
+		"currentSpouse": null
+	},
+	{
 		"id": 294874671,
 		"firstName": "Dave",
 		"lastName": "Pafoy",
