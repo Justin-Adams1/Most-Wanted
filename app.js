@@ -62,7 +62,12 @@ function mainMenu(person, people){
    completeDescendants = test;
   let x=0;
 
-   completeDescendants.forEach(x => {grandchildSearch(completeDescendants, people)}, x++);
+  displayDescendant = (grandchildSearch(test, people));
+  completeDescendants.push(displayDescendant); 
+
+  
+
+   //completeDescendants.forEach(x => {grandchildSearch(completeDescendants, people)}, x++);
   
    //displayDescendant = grandchildSearch(test, people);
    //completeDescendants.push(displayDescendant);
@@ -75,22 +80,20 @@ function mainMenu(person, people){
   
     do{
     let kid = childBuffer[x];
-    while(kid.id != undefined){
      let grandchild = kid;
      let descendantList = descendantSearch(grandchild, people);
-     if(childBuffer.length != 0){
-      kid = childBuffer[x];
-      allDescendants.concat(descendantList);
+     if(descendantList.length == 0){
       x++;
+      kid = childBuffer[x];
      }else{
+      allDescendants.push(descendantList);
        x++;
-       allDescendants.concat(descendantList);
+       kid = childBuffer[x];
        break;
      }
-    }
-  }while(childBuffer.length != undefined)
+  }while(x < childBuffer.length)
   
-  return allDescendants;
+  return allDescendants.shift();
   }
 
 
