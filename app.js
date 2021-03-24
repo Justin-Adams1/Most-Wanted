@@ -1,4 +1,4 @@
-//"use strict"
+"use strict"
 /*
 Build all of your functions for displaying and gathering information below (GUI).
 */
@@ -60,50 +60,54 @@ function mainMenu(person, people){
 
    let test = descendantSearch(person, people);
    completeDescendants = test;
+  let x=0;
 
-   displayDescendant = grandchildSearch(test, people);
-   completeDescendants.push(displayDescendant);
+   completeDescendants.forEach(x => {grandchildSearch(completeDescendants, people)}, x++);
+  
+   //displayDescendant = grandchildSearch(test, people);
+   //completeDescendants.push(displayDescendant);
    //alert(completeDescendants);
 
 
-   function grandchildSearch(childBuffer, people)
-    let kid = childBuffer[0];
-    let x = 0;
+   function grandchildSearch(childBuffer, people){
+    let allDescendants =[];
+    x = 0;
+  
+    do{
+    let kid = childBuffer[x];
     while(kid.id != undefined){
      let grandchild = kid;
      let descendantList = descendantSearch(grandchild, people);
-     if(descendantList.length != 0){
+     if(childBuffer.length != 0){
+      kid = childBuffer[x];
+      allDescendants.concat(descendantList);
+      x++;
+     }else{
        x++;
-       kid = childBuffer[x];
-     }allDescendants.push(descendatList);
-    
-    }return allDescendants;
+       allDescendants.concat(descendantList);
+       break;
+     }
+    }
+  }while(childBuffer.length != undefined)
   
-   
+  return allDescendants;
+  }
 
 
+function  descendantSearch(personDescendant, people){
+
+  let completeDescendants = (people.filter(function(person){
+    if(person.parents[0] == personDescendant.id || person.parents[1] == personDescendant.id){
+      return true;
+    }else{
+      return false;
+    } 
+  }))
+
+  return completeDescendants;
+  }
 
 
-
-  
-    // let test = descendantSearch(person, people);
-   //s descendantList = test.forEach(descendantSearch(descendantList, people));
-
-    //descendantList = test.forEach(descendantSearch);
-    //alert(descendantList);
-    // alert(test[0].firstName + " " + test[0].lastName);
-
-
-    
-     
-    
-   
-    // This is still a work in progress, unworking
-    // completeDescendants = descendantSearch(people, personDescendant, completeDescendants);
-    // do{
-    // completeDescendants.forEach(descendantSearch(people, completeDescendants[count3], completeDescendants));
-    // }while(count3 < completeDescendants.length, count3++)
-   
     break;
     case "restart":
     app(people); // restart
@@ -272,38 +276,6 @@ function spouseSearch(people, personFamily, spouseSearch){
   })
   return spouseSearch;
 }
-
-function  descendantSearch(personDescendant, people){
-  //let completeDescendantsBuffer = [];
-
-  let completeDescendants = (people.filter(function(person){
-    if(person.parents[0] == personDescendant.id || person.parents[1] == personDescendant.id){
-      return true;
-    }else{
-      return false;
-    } 
-  }))
- // if(Array.isArray(completeDescendantsBuffer) == false){
- //   completeDescendantsBuffer = [];
-   // completeDescendants = completeDescendants.concat(completeDescendantsBuffer);
- // }else{  
- // completeDescendants = completeDescendants.concat(completeDescendantsBuffer)
-
-  return completeDescendants;
-  }
-
-  // let test = descendantSearch(person, people);
-  
-  // while(test = [].id != undefined){
-  //   let grandchild = test = [].id;
-  //  let completeDescendants = descendantSearch(grandchild, people)
-  // }
- 
-
-
-
-
-
 
 // alerts a list of people
 function displayPeople(people){
