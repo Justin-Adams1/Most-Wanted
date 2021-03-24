@@ -54,6 +54,40 @@ function mainMenu(person, people){
    let displayDescendant = [];
    personDescendant = person;
    let count5 =0;
+   let descendantList;
+
+
+
+   let test = descendantSearch(person, people);
+   completeDescendants = test;
+   let child = test[0];
+   let x = 0;
+   while(child.id != undefined){
+    let grandchild = child;
+    let descendantList = descendantSearch(grandchild, people);
+    if(descendantList == 0){
+      x++;
+      child = test[x];
+    }descendantList.push(allDescendants);
+    
+   }return allDescendants;
+
+
+
+
+
+  
+    // let test = descendantSearch(person, people);
+   //s descendantList = test.forEach(descendantSearch(descendantList, people));
+
+    //descendantList = test.forEach(descendantSearch);
+    //alert(descendantList);
+    // alert(test[0].firstName + " " + test[0].lastName);
+
+
+    
+     
+    
    
     // This is still a work in progress, unworking
     // completeDescendants = descendantSearch(people, personDescendant, completeDescendants);
@@ -230,10 +264,10 @@ function spouseSearch(people, personFamily, spouseSearch){
   return spouseSearch;
 }
 
-function descendantSearch(people, personDescendant, completeDescendants){
-  let completeDescendantsBuffer = [];
+function  descendantSearch(personDescendant, people){
+  //let completeDescendantsBuffer = [];
 
-  completeDescendantsBuffer = (people.filter(function(person){
+  let completeDescendants = (people.filter(function(person){
     if(person.parents[0] == personDescendant.id || person.parents[1] == personDescendant.id){
       return true;
     }else{
@@ -242,11 +276,24 @@ function descendantSearch(people, personDescendant, completeDescendants){
   }))
  // if(Array.isArray(completeDescendantsBuffer) == false){
  //   completeDescendantsBuffer = [];
-    completeDescendants = completeDescendants.concat(completeDescendantsBuffer);
+   // completeDescendants = completeDescendants.concat(completeDescendantsBuffer);
  // }else{  
  // completeDescendants = completeDescendants.concat(completeDescendantsBuffer)
+
   return completeDescendants;
   }
+
+  // let test = descendantSearch(person, people);
+  
+  // while(test = [].id != undefined){
+  //   let grandchild = test = [].id;
+  //  let completeDescendants = descendantSearch(grandchild, people)
+  // }
+ 
+
+
+
+
 
 
 // alerts a list of people
